@@ -1,7 +1,24 @@
 #!/usr/bin/env bash
 
+###############################
+## Drupal Initialization Script
+## This file downloads drupal for the
+## Provided version number
+## Creates a test database given the
+## Provided db name / user / password.
+##
+
 #Drupal Version
 version=7.34
+
+# Database User to setup
+db_user=test_user_name1
+
+# Database Name to setup
+db_name=test_db_name1
+
+# Password for Database User.
+db_pass=test_db_pass1
 
 
 # If no index.php exists in the public folder start the Drupal download.
@@ -19,24 +36,31 @@ then
 	# Move extracted files into Document root.
 	mv * ../
 	
-	
+	# Clean up original download file.
 	cd /vagrant/public
 	rm -rf drupal-*
-
+	
+	echo "Drupal downloaded... load localhost in a browser to start the installation."
+	
+else
+	echo "There is already an index.php file in your document root... Please clear your document root and try again."
 fi
 
 if [ ! -f /var/log/databasesetup ];
 then
-    echo "CREATE USER '$dbname'@'localhost' IDENTIFIED BY '{$dbpass}'" | mysql -uroot -p12passwd34
-    echo "CREATE DATABASE dev_db" | mysql -uroot -p12passwd34
-    echo "GRANT ALL ON dev_db.* TO 'dev_db_usr'@'localhost'" | mysql -uroot -p12passwd34
+    echo "CREATE USER '$db_user'@'localhost' IDENTIFIED BY '{$db_pass}'" | mysql -uroot -p12passwd34
+    echo "CREATE DATABASE $db_name" | mysql -uroot -p12passwd34
+    echo "GRANT ALL ON $db_name.* TO '$db_user'@'localhost'" | mysql -uroot -p12passwd34
     echo "flush privileges" | mysql -uroot -p12passwd34
 
-    touch /var/log/databasesetup
+    sudo touch /var/log/databasesetup
 
     if [ -f /vagrant/data/initial.sql ];
     then
         mysql -uroot -p12passwd34 dev_db < /vagrant/data/initial.sql
     fi
+	
+else
+	echo "/var/log/databasesetup file exists! NO database or user created"
 fi
 
