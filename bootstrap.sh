@@ -3,7 +3,7 @@
 sudo debconf-set-selections <<< 'mysql-server-5.5 mysql-server/root_password password 12passwd34'
 sudo debconf-set-selections <<< 'mysql-server-5.5 mysql-server/root_password_again password 12passwd34'
 sudo apt-get update
-sudo apt-get -y install mysql-server-5.5 php5-mysql apache2 php5
+sudo apt-get -y install mysql-server-5.5 php5-mysql apache2 php5 php5-gd
  
 if [ ! -h /var/www ];
 then 
