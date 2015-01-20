@@ -38,7 +38,8 @@ Vagrant.configure(2) do |config|
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
   # config.vm.synced_folder "../data", "/vagrant_data"
-  config.vm.synced_folder ".", "/vagrant", :mount_options => [ "dmode=755","fmode=744" ]
+  config.vm.synced_folder ".", "/vagrant", :owner => "vagrant",
+    :group => "www-data", :mount_options => [ "dmode=775","fmode=764" ]
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
@@ -77,6 +78,6 @@ Vagrant.configure(2) do |config|
   config.vm.network :forwarded_port, host: 80, guest: 80,  auto_correct: true
   
   # Run Drupal download script.
-  config.vm.provision :shell, path: "drupal.sh"
+  #config.vm.provision :shell, path: "drupal.sh"
   
 end
