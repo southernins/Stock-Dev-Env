@@ -1,8 +1,6 @@
 Project Development Environment
 ===============================
-Version: 1.0.0
 
-automation of a development environment.
 
 Dependencies
 ------------
