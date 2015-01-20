@@ -74,7 +74,7 @@ Vagrant.configure(2) do |config|
   config.vm.provision :shell, path: "bootstrap.sh"
   
   # Setup network connection between host/guest.
-  config.vm.network :forwarded_port, host: 80, guest: 80
+  config.vm.network :forwarded_port, host: 80, guest: 80,  auto_correct: true
   
   # Run Drupal download script.
   config.vm.provision :shell, path: "drupal.sh"
