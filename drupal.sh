@@ -12,13 +12,13 @@
 version=7.34
 
 # Database User to setup
-db_user=username
+db_user=uname
 
 # Database Name to setup
-db_name=database
+db_name=dbname
 
 # Password for Database User.
-db_pass=password
+db_pass=pass
 
 
 # If no index.php exists in the public folder start the Drupal download.
