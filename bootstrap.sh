@@ -14,5 +14,8 @@ then
 
     sed -i '/AllowOverride None/c AllowOverride All' /etc/apache2/sites-available/default
 
+	sudo chown vagrant /var/lock/apache2
+    usermod -a -G adm vagrant
+	
     service apache2 restart
 fi
