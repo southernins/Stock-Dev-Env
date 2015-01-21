@@ -38,8 +38,7 @@ Vagrant.configure(2) do |config|
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
   # config.vm.synced_folder "../data", "/vagrant_data"
-  config.vm.synced_folder ".", "/vagrant", :owner => "www-data",
-    :group => "www-data", :mount_options => [ "dmode=775","fmode=764" ]
+  config.vm.synced_folder ".", "/vagrant", :mount_options => [ "dmode=755","fmode=744" ]
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
