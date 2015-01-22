@@ -31,14 +31,14 @@ then
 	tar -zxvf latest.tar.gz
 	
 	# Change directory to extracted folder	
-	cd ./wordpress*
+	cd ./latest*
 	
 	# Move extracted files into Document root.
 	mv * ../
 	
 	# Clean up original download file.
 	cd /vagrant/public
-	rm -rf wordpress-*
+	rm -rf latest*
 	
 	echo "WordPress downloaded... load localhost in a browser to start the installation."
 	
