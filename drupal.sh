@@ -48,7 +48,7 @@ fi
 
 if [ ! -f /var/log/databasesetup ];
 then
-    echo "CREATE USER '$db_user'@'localhost' IDENTIFIED BY '{$db_pass}'" | mysql -uroot -p12passwd34
+    echo "CREATE USER '$db_user'@'localhost' IDENTIFIED BY '$db_pass'" | mysql -uroot -p12passwd34
     echo "CREATE DATABASE $db_name" | mysql -uroot -p12passwd34
     echo "GRANT ALL ON $db_name.* TO '$db_user'@'localhost'" | mysql -uroot -p12passwd34
     echo "flush privileges" | mysql -uroot -p12passwd34
