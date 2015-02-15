@@ -22,31 +22,31 @@ while [ $1 ]; do
     shift
 done
 
-if [ -z db_name ];
+if [ -z "$db_name" ];
 then
     echo -n "Name of Database to create: "
-    read -s db_name
+    read db_name
 
 fi
 
-if [ -z db_user ];
+if [ -z "$db_user" ];
 then
-    echo -n "Username: "
-    read -s db_user
+    echo -n "Database Username: "
+    read db_user
 
 fi
 
-if [ -z db_pass ];
+if [ -z "$db_pass" ];
 then
-    echo -n "Password: "
-    read -s db_pass
+    echo -n "Database Password: "
+    read db_pass 
 
 fi
 
-echo "CREATE USER '$db_user'@'localhost' IDENTIFIED BY '$db_pass'" | mysql -uroot -p12passwd34
-echo "CREATE DATABASE $db_name" | mysql -uroot -p12passwd34
-echo "GRANT ALL ON $db_name.* TO '$db_user'@'localhost'" | mysql -uroot -p12passwd34
-echo "flush privileges" | mysql -uroot -p12passwd34
+echo "CREATE USER '$db_user'@'localhost' IDENTIFIED BY '$db_pass'" | mysql -u$mysqluser -p$mysqlpass
+echo "CREATE DATABASE $db_name" | mysql -u$mysqluser -p$mysqlpass
+echo "GRANT ALL ON $db_name.* TO '$db_user'@'localhost'" | mysql -u$mysqluser -p$mysqlpass
+echo "flush privileges" | mysql -u$mysqluser -p$mysqlpass
 
 
 exit 0
