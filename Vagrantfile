@@ -79,6 +79,13 @@ Vagrant.configure(2) do |config|
   # Run Drupal download script.
   #config.vm.provision :shell, path: "drupal.sh"
   
+  
+  ## This seems to not solve the problem....
+  ## I still had to edite the rsolve.conf file to add google nameservers.
+  ## add google open dns servers [8.8.8.8] and [8.8.4.4] to
+  ## /etc/resolvconf/resolv.conf.d/head
+  ## nameserver 8.8.8.8
+  ## then run resolvconf -u to update configuration.
   config.vm.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
 
   
