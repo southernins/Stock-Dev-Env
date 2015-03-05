@@ -79,4 +79,7 @@ Vagrant.configure(2) do |config|
   # Run Drupal download script.
   #config.vm.provision :shell, path: "drupal.sh"
   
+  config.vm.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+
+  
 end
