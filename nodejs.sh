@@ -3,7 +3,7 @@
 ## Node Installer
 #####################
 
-sudo apt-get install nodejs npm
+#sudo apt-get install nodejs npm
 
 
 ## Updating Node to latest version
