@@ -4,7 +4,7 @@ sudo apt-get -y install  apache2
 
 if [ ! -h /var/www ];
 then 
-    rm -rf /var/www
+    sudo rm -rf /var/www
     sudo ln -s /vagrant/public /var/www
 
     a2enmod rewrite
