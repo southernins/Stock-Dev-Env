@@ -4,6 +4,10 @@
 # Setup and Strucutre Angular Proejct
 ############
 
+
+# Gotta install Git
+sudo apt-get install -y git
+
 # Currently using Angular-seed.
 # https://github.com/angular/angular-seed
 
