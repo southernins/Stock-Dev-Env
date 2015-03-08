@@ -22,3 +22,6 @@ curl -sL https://deb.nodesource.com/setup | sudo bash -
 
 sudo apt-get install -y nodejs
 
+# sudo npm install --no-bin-links --no-bin-links  <name of module to install >
+# use --no-bin-links to prevent symlink issues on vagrant/windows.
+
