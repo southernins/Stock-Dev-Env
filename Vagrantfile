@@ -87,6 +87,11 @@ Vagrant.configure(2) do |config|
   ## nameserver 8.8.8.8
   ## then run resolvconf -u to update configuration.
   #config.vm.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+  
+	config.vm.provider "virtualbox" do |v|
+		v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+		v.customize ["modifyvm", :id, "--natdnsproxy1", "on"]
+	end
 
   
 end
