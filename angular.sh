@@ -12,7 +12,8 @@ sudo apt-get install -y git
 
 # inside /vagrant/ there were issues related to virtualbox shares.
 # moved the inital download of angular-seed away from /vagrant/angular-seed
-sudo mkdir /home/vagrant/angular-seed
+# DONT use sudo here so the dir is owned by the vagrant user...
+mkdir /home/vagrant/angular-seed
 git clone --depth=1 https://github.com/angular/angular-seed.git /home/vagrant/angular-seed
 
 ##########
@@ -51,6 +52,8 @@ sudo rm -rf ./app
 sudo mv ./* /vagrant/
 sudo mv ./.??* /vagrant/
 
+# lets move back to the /vagrant working directory
+cd /vagrant
 
 # install node modules and use --no-bin-links to sidestep symlink issue in vagrant on windows.
 # sudo npm install --no-bin-links
@@ -81,3 +84,19 @@ sudo npm install
 # overcome this by calling manually while still inside /vagrant/
 
 #./node_modules/bower/bin/bower install
+
+
+
+##########################################
+# Problems running npm install
+#
+#
+##########################################
+
+# Running npm install
+# symlink issues
+# Error: UNKNOWN symlink '../'
+
+# Running npm install -g
+# Bower: not found.
+# Exit status 127
