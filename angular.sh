@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 #############
-# Setup and Structure Angular Project
+# Set up and Structure Angular Project
 ############
 
 # Gotta install Git
@@ -11,14 +11,14 @@ sudo apt-get install -y git
 # https://github.com/angular/angular-seed
 
 # inside /vagrant/ there were issues related to virtualbox shares.
-# moved the inital download of angular-seed away from /vagrant/angular-seed
+# moved the initial download of angular-seed away from /vagrant/angular-seed
 # DONT use sudo here so the dir is owned by the vagrant user...
 mkdir /home/vagrant/angular-seed
 git clone --depth=1 https://github.com/angular/angular-seed.git /home/vagrant/angular-seed
 
 ##########
 # WE NEED TO UPDATE PATHS!!!! Angular Seed uses the "./app" directory
-# my vagrant setup has public files inside "./public". a scan and replace
+# my vagrant set up has public files inside "./public". a scan and replace
 # of the files to swap "app" with "public" needs to be done before proceeding
 #####################
 
@@ -34,13 +34,13 @@ sudo rm -rf .git LICENSE README.md
 # find ./ -maxdepth 1 -type f -exec grep -l app\/ {} \;
 
 # This perl command replaces the string app/ in the angular seed project files with my
-# string "public/" so the config files will properly match the vagrant setup.
+# string "public/" so the config files will properly match the vagrant set up.
 # this does not work in a virtual box shared folder... So I'm changing the initial download
 # of the angular seed project to /home/vagrant/angular-seed and will move files into
 # my /vagrant share when done
 perl -p -i -e 's/app\//public\//g' `find . -maxdepth 1 -type f -exec grep -l app\/ {} \;`
 
-# Now that i have updated the config files lets move things to there proper location
+# Now that I have updated the config files lets move things to there proper location
 # move the angular-seed ./app/* files to my ./public/* folder
 sudo mv ./app/* /vagrant/public/
 sudo mv ./app/.??* /vagrant/public/
@@ -52,14 +52,17 @@ sudo rm -rf ./app
 sudo mv ./* /vagrant/
 sudo mv ./.??* /vagrant/
 
+# remove the angular-seed temp dir.
+sudo rm -rf /home/vagrant/angular-seed
+
 # lets move back to the /vagrant working directory
 cd /vagrant
 
 # install node modules and use --no-bin-links to sidestep symlink issue in vagrant on windows.
 # sudo npm install --no-bin-links
 
-# using --no-bin-links i still have issues related to symlinks and shared folders.
-## other articles suggest moving node_modules outside the shared /vagrant folder to remedie issues 
+# using --no-bin-links I still have issues related to symlinks and shared folders.
+## other articles suggest moving node_modules outside the shared /vagrant folder to remedy issues 
 ## running vagrant/node/npm
 ## http://kmile.nl/post/73956428426/npm-vagrant-and-symlinks-on-windows
 
@@ -67,10 +70,10 @@ cd /vagrant
 # it should be acceptable to use global installs for node modules.  Normally this is frowned up because
 # different projects may require different versions of modules... 
 
-#  I should'nt have to use -g
+#  I shouldn't have to use -g
 # sudo npm install -g
 
-sudo npm install 
+# sudo npm install 
 
 # After this I still had to install bower manually
 # sudo npm install -g bower
@@ -78,13 +81,12 @@ sudo npm install
 # then I can run bower install ( trying to get npm install working )
 # bower install
 
-# angular-seed states it runs bower automaticlly
-# this does not seem to happen in this setup.
+# angular-seed states it runs bower automatically
+# this does not seem to happen in this set up.
 # possible vagrant / windows issue?
 # overcome this by calling manually while still inside /vagrant/
 
 #./node_modules/bower/bin/bower install
-
 
 
 ##########################################
