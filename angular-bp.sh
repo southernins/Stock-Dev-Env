@@ -27,7 +27,7 @@ git clone --depth=1 https://github.com/ngbp/ngbp.git /home/vagrant/angular
 cd /home/vagrant/angular
 
 # we don't need/want angular-seeds .git directory the license or readme file.
-# sudo rm -rf .git LICENSE README.md
+sudo rm -rf .git LICENSE *.md
 
 # First try at updating paths pragmatically
 
