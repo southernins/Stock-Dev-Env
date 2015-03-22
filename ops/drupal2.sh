@@ -8,10 +8,6 @@
 # instillations from simple make files.
 #
 
-# Get composer.. This may be useful for more than just drupal
-# I may need to move this into the bootstrap script(s)
-curl -sS https://getcomposer.org/installer | php
-sudo mv composer.phar /usr/local/bin/composer
 
 ## now go and get Drush current version 6.x
 composer global require drush/drush:6.*
