@@ -71,7 +71,7 @@ Vagrant.configure(2) do |config|
   # SHELL
   
   # Run provision script
-  config.vm.provision :shell, path: "bootstrap.sh"
+  config.vm.provision :shell, path: "ops/bootstrap.sh"
   
   # Setup network connection between host/guest.
   config.vm.network :forwarded_port, host: 80, guest: 80,  auto_correct: true
