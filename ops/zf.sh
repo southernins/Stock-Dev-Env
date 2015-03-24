@@ -28,8 +28,17 @@ composer create-project --repository-url="http://packages.zendframework.com" zen
 rm -rf README.md /home/vagrant/zf/vendor/bin/ /vagrant/public/
 
 # Move 
-mv * /vagrant/
+mv /home/vagrant/zf/* /vagrant/
 
-rm -rf /var/www/html
-sudo ln -s /vagrant/public /var/www/html
-sudo service apache2 restart
+sudo rm -rf /var/www
+# sudo ln -s /vagrant/public /var/www/html
+# sudo service apache2 restart
+
+### Currently
+# i'm having to manually edit /etc/apache2/sites-avaiable/000-default
+# and change the document root back to /var/www
+# Then restart apache
+
+# This should install the CLi tool for Zend Server.
+composer require zendframework/zftool:dev-master
+## see http://framework.zend.com/manual/2.0/en/modules/zendtool.introduction.html
