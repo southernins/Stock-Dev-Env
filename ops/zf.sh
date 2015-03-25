@@ -11,10 +11,9 @@
 # we'll use a temp dir to hold the project.
 mkdir /home/vagrant/zf
 
-# PHP Update....
-
+# PHP Update....  no longer needed on ubuntu 14.04 since it installs
+# php 5.4 out of the box.
 # sudo apt-get install python-software-properties
-
 # sudo add-apt-repository ppa:ondrej/php5
 # sudo apt-get update
 # sudo apt-get install php5
@@ -28,11 +27,9 @@ rm -rf README.md /home/vagrant/zf/vendor/bin/ /vagrant/public/
 # Move 
 mv /home/vagrant/zf/* /vagrant/
 
-# sudo rm -rf /var/www
+# Make sure we are in the working project directory.
+cd /vagrant/
 
-# sudo ln -s /vagrant/public /var/www/html
-# sudo service apache2 restart
-
-# This should install the CLi tool for Zend Server.
+# install the CLi tool for Zend Server.
 composer require zendframework/zftool:dev-master
 ## see http://framework.zend.com/manual/2.0/en/modules/zendtool.introduction.html
