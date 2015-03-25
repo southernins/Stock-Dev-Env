@@ -15,7 +15,7 @@ Vagrant.configure(2) do |config|
   #config.vm.box = "hashicorp/precise32"
   
   # Trying differnet vm box with Zend Framework project.
-  config.vm.box = "ubuntu/trusty64"
+  config.vm.box = "ubuntu/trusty32"
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
