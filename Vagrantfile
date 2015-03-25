@@ -12,7 +12,10 @@ Vagrant.configure(2) do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://atlas.hashicorp.com/search.
-  config.vm.box = "hashicorp/precise32"
+  #config.vm.box = "hashicorp/precise32"
+  
+  # Trying differnet vm box with Zend Framework project.
+  config.vm.box = "ubuntu/trusty64"
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
@@ -71,12 +74,27 @@ Vagrant.configure(2) do |config|
   # SHELL
   
   # Run provision script
-  config.vm.provision :shell, path: "bootstrap.sh"
+  config.vm.provision :shell, path: "ops/bootstrap.sh"
   
   # Setup network connection between host/guest.
   config.vm.network :forwarded_port, host: 80, guest: 80,  auto_correct: true
   
   # Run Drupal download script.
   #config.vm.provision :shell, path: "drupal.sh"
+  
+  
+  ## This seems to not solve the problem....
+  ## I still had to edite the rsolve.conf file to add google nameservers.
+  ## add google open dns servers [8.8.8.8] and [8.8.4.4] to
+  ## /etc/resolvconf/resolv.conf.d/head
+  ## nameserver 8.8.8.8
+  ## then run resolvconf -u to update configuration.
+  #config.vm.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+  
+	config.vm.provider "virtualbox" do |v|
+		v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+		v.customize ["modifyvm", :id, "--natdnsproxy1", "on"]
+	end
+
   
 end

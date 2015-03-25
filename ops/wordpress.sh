@@ -1,54 +1,57 @@
 #!/usr/bin/env bash
 
 ###############################
-## Drupal Initialization Script
-## This file downloads drupal for the
+## Wordpress Initialization Script
+## This file downloads Wordpress for the
 ## Provided version number
 ## Creates a test database given the
 ## Provided db name / user / password.
 ##
 
-#Drupal Version
-version=7.34
+#WordPress Version
+version=https://wordpress.org/latest.tar.gz
 
 # Database User to setup
-db_user=test_user_name1
+db_user=uname
 
 # Database Name to setup
-db_name=test_db_name1
+db_name=dbname
 
 # Password for Database User.
-db_pass=test_db_pass1
+db_pass=pass
 
 
-# If no index.php exists in the public folder start the Drupal download.
+# If no index.php exists in the public folder start the WordPress download.
 if [ ! -f /vagrant/public/index.php ];
 then
 
-	# Download and extract Drupal files.
+
+	# Download and extract WordPress files.
 	cd /vagrant/public
-	wget https://www.drupal.org/files/projects/drupal-$version.tar.gz
-	tar -zxvf drupal-$version.tar.gz
-	
-	# Change directory to extracted folder	
-	cd ./drupal-$version
-	
+
+	wget $version
+	tar -zxvf latest.tar.gz
+
+	# Change directory to extracted folder
+	cd ./wordpress
+
 	# Move extracted files into Document root.
 	mv * ../
-	
+
 	# Clean up original download file.
 	cd /vagrant/public
-	rm -rf drupal-*
-	
-	echo "Drupal downloaded... load localhost in a browser to start the installation."
-	
+	rm -rf latest.tar.gz
+	rm -rf wordpress
+
+	echo "WordPress downloaded... load localhost in a browser to start the installation."
+
 else
 	echo "There is already an index.php file in your document root... Please clear your document root and try again."
 fi
 
 if [ ! -f /var/log/databasesetup ];
 then
-    echo "CREATE USER '$db_user'@'localhost' IDENTIFIED BY '{$db_pass}'" | mysql -uroot -p12passwd34
+    echo "CREATE USER '$db_user'@'localhost' IDENTIFIED BY '$db_pass'" | mysql -uroot -p12passwd34
     echo "CREATE DATABASE $db_name" | mysql -uroot -p12passwd34
     echo "GRANT ALL ON $db_name.* TO '$db_user'@'localhost'" | mysql -uroot -p12passwd34
     echo "flush privileges" | mysql -uroot -p12passwd34

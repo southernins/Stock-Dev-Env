@@ -12,11 +12,18 @@ Dependencies
 Getting Started
 ---------------
 
-If you have GIT installed you can run the following in an empty development directory to get started 
-  git clone git://github.com/nakie/Stock-Dev-Env.git ./  
+If you have GIT installed you can run the following in an empty development directory to get started  
+    git clone git://github.com/nakie/Stock-Dev-Env.git ./  
+
+to get only the development branch ( useful while updating this project )
+
+    git clone --branch Development git://github.com/nakie/Stock-Dev-Env.git ./  
   
-To initialize the dev environment for the first time run vagrant up. This should read the "Vagrantfile" and download the
-needed box file.  Once the VM has started bootstrap.sh is run to configure the environment.  Apache / MYSQL / PHP is installed, the document root is pointed to the public folder.  Networking configuration is setup.
+To initialize the dev environment for the first time run the following 
+    vagrant up. 
+This should read the "Vagrantfile" and download the needed box file.  Once the VM has started bootstrap.sh is run automaticly to 
+configure the environment.  Apache / MYSQL / PHP is installed, the document root is pointed to the public folder. 
+Networking configuration is setup.
 
 use vagrant ssh to connect to the machine via SSH
 
