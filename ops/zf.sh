@@ -11,13 +11,14 @@
 # we'll use a temp dir to hold the project.
 mkdir /home/vagrant/zf
 
-# PHP Update....
+# PHP Update.... 
+# using updated version of ubuntu that no longer requires this
 
-sudo apt-get install python-software-properties
+#sudo apt-get install python-software-properties
 
-sudo add-apt-repository ppa:ondrej/php5
-sudo apt-get update
-sudo apt-get install php5
+#sudo add-apt-repository ppa:ondrej/php5
+#sudo apt-get update
+#sudo apt-get install php5
 
 
 
@@ -30,14 +31,6 @@ rm -rf README.md /home/vagrant/zf/vendor/bin/ /vagrant/public/
 # Move 
 mv /home/vagrant/zf/* /vagrant/
 
-sudo rm -rf /var/www
-# sudo ln -s /vagrant/public /var/www/html
-# sudo service apache2 restart
-
-### Currently
-# i'm having to manually edit /etc/apache2/sites-avaiable/000-default
-# and change the document root back to /var/www
-# Then restart apache
 
 # This should install the CLi tool for Zend Server.
 composer require zendframework/zftool:dev-master
