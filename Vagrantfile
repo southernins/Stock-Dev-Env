@@ -74,7 +74,7 @@ Vagrant.configure(2) do |config|
   # SHELL
 
   # Run provision script
-  config.vm.provision :shell, path: "ops/bootstrap.sh"
+  config.vm.provision :shell, path: EnvType.environment()
 
   # Setup network connection between host/guest.
   config.vm.network :forwarded_port, host: 80, guest: 80,  auto_correct: true
@@ -102,8 +102,18 @@ module EnvType
   def self.environment
     begin
       system 'stty -echo'
+
+      print File.expand_path File.dirname(__FILE__)
+      puts "\n"
+      print Dir.pwd
+      puts "\n"
+      File.foreach( './ops/menu.txt').with_index do |line|
+        puts "#{line}"
+      end
+
       print 'Select an environment( 1 Drupal, 2 Basic LAMP, 3 Zend Framework ): '
-      ; choice = $stdin.gets.chomp; puts "\n"
+      choice = $stdin.gets.chomp
+      puts "\n"
     ensure
       system 'stty echo'
     end
