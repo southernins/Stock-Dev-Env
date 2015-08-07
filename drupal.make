@@ -36,7 +36,10 @@ libraries[bootstrap][overwrite] = TRUE
 
 ; Get Custom Bootstrap Child Theme from Github.
 libraries[custom_core][download][type] = "get"
-libraries[custom_core][download][url] = "https://github.com/nakie/custom_core/archive/master.zip"
+; Production branch of this should use custom_core Master ( 7.x Production )
+;libraries[custom_core][download][url] = "https://github.com/nakie/custom_core/archive/master.zip"
+; the dev branch of stock dev env needs to be able to test the DEV branch fo custom core.
+libraries[custom_core][download][url] = "https://github.com/nakie/custom_core/archive/7.x-DEV.zip"
 libraries[custom_core][directory_name] = "custom_core"
 libraries[custom_core][destination] = "themes"
 
