@@ -34,6 +34,12 @@ libraries[bootstrap][directory_name] = "bootstrap"
 libraries[bootstrap][destination] = "themes/bootstrap"
 libraries[bootstrap][overwrite] = TRUE
 
+; Get Custom Bootstrap Child Theme from Github.
+libraries[custom_core][download][type] = "get"
+libraries[custom_core][download][url] = "https://github.com/nakie/custom_core/archive/master.zip"
+libraries[custom_core][directory_name] = "custom_core"
+libraries[custom_core][destination] = "themes"
+
 ; Libraries
 ; Please fill the following out. Type may be one of get, git, bzr or svn,
 ; and url is the url of the download.
