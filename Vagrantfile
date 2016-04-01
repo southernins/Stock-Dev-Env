@@ -18,14 +18,15 @@ Vagrant.configure(2) do |config|
     # config.vm.synced_folder "../data", "/vagrant_data"
     config.vm.synced_folder ".", "/vagrant", :mount_options => [ "dmode=755","fmode=744" ]
 
-    # Run provision script
-    config.vm.provision :shell, path: "ops/bootstrap.sh"
+
 
     # Setup network connection between host/guest.
     config.vm.network :forwarded_port, host: 80, guest: 80,  auto_correct: true
   
   
-  
+    # Run provision script
+    # #config.vm.provision :shell, path: "ops/bootstrap.sh"
+    
     # Chef Provisioning
     config.vm.provision :chef_solo do |chef|
         chef.add_recipe "apache2"
