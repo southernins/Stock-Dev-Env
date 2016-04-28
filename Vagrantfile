@@ -7,7 +7,7 @@
 # you're doing.
 Vagrant.configure(2) do |config|
     config.vm.provision "puppet" do |puppet|
-        puppet.manifest_path = ["vm", "/vagrant/ops/puppet"]
+        #puppet.manifest_path = ["vm", "/vagrant/ops/puppet"]
         puppet.manifest_file = "lamp.pp"
     end
   
