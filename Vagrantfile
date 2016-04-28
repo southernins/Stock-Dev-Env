@@ -6,6 +6,9 @@
 # backwards compatibility). Please don't change it unless you know what
 # you're doing.
 Vagrant.configure(2) do |config|
+
+	config.vm.box = "ubuntu/trusty32"
+
     config.vm.provision "puppet" do |puppet|
         #puppet.manifest_path = ["vm", "/vagrant/ops/puppet"]
         puppet.manifest_file = "lamp.pp"
