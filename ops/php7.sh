@@ -19,4 +19,7 @@ sudo sed -i "/date.timezone \=/c date.timezone \= America\/Chicago" /etc/php/7.0
 # update time zone in CLI config file.
 sudo sed -i "/date.timezone \=/c date.timezone \= America\/Chicago" /etc/php/7.0/cli/php.ini
 
+# Enable xDebug Remote Debugging
+# sudo sed -i "$ xdebug.remote_enable = 1" /etc/php/7.0/mods-available/xdebug.ini
+
 # PS1="React-Form: \w\$ "
