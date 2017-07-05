@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #
 ###############################
-# Scripts to run after you vagrant ssh into a new box for the first time
+# Stuff to install so that laravel dusk will work
 #
 
 sudo apt-get install -y libnss3-dev libgconf-2-4
