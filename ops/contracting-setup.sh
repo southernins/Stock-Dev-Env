@@ -10,4 +10,5 @@ sudo rm -rf /vagrant/.git
 ./php7.sh
 ./mysql.sh
 ./composer.sh
+./dusk-dependencies.sh
 ./db.sh
