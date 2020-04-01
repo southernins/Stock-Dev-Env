@@ -13,11 +13,11 @@ Getting Started
 ---------------
 
 If you have GIT installed you can run the following in an empty development directory to get started  
-    git clone git://github.com/nakie/Stock-Dev-Env.git ./  
+    git clone git://github.com/southernins/Stock-Dev-Env.git ./  
 
 to get only the development branch ( useful while updating this project )
 
-    git clone --branch Development git://github.com/nakie/Stock-Dev-Env.git ./  
+    git clone --branch Development git://github.com/southernins/Stock-Dev-Env.git ./  
   
 To initialize the dev environment for the first time run the following 
     vagrant up. 
