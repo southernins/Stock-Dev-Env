@@ -7,7 +7,7 @@
 sudo rm -rf /vagrant/.git
 
 ./apache.sh
-./php7_1.sh
+./php7_3.sh
 ./mysql.sh
 ./composer.sh
 ./nodejs.sh
