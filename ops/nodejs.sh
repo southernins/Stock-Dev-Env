@@ -7,10 +7,12 @@
 
 ## Changing this again to follow the instructions at
 ## https://github.com/joyent/node/wiki/installing-node.js-via-package-manager
+## MOVED TO
+## https://github.com/nodesource/distributions
 ##
 ##
 
-curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
+curl -fsSL https://deb.nodesource.com/setup_14.x | sudo -E bash -
 
 sudo apt-get install -y nodejs
 
