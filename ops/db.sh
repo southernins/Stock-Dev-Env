@@ -43,7 +43,9 @@ then
 
 fi
 
-echo "CREATE USER '$db_user'@'localhost' IDENTIFIED BY '$db_pass'" | mysql -u$mysqluser -p$mysqlpass
+# MYSQL 8 uses caching_sha2_password as default auth plugin.
+## setting IDENTIFIED WITH to "mysql_native_password" for time being in Dev environments
+echo "CREATE USER '$db_user'@'localhost' IDENTIFIED WITH mysql_native_password BY '$db_pass'" | mysql -u$mysqluser -p$mysqlpass
 echo "CREATE DATABASE $db_name" | mysql -u$mysqluser -p$mysqlpass
 echo "GRANT ALL ON $db_name.* TO '$db_user'@'localhost'" | mysql -u$mysqluser -p$mysqlpass
 echo "flush privileges" | mysql -u$mysqluser -p$mysqlpass
