@@ -94,6 +94,11 @@ Vagrant.configure(2) do |config|
 	config.vm.provider "virtualbox" do |v|
 		v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
 		v.customize ["modifyvm", :id, "--natdnsproxy1", "on"]
+
+		## Using Symlinks in Shared folders ( Windows 10 ) requries 2 steps
+		## 1. Run an administrative powershell
+		## 2. Uncomment this line
+		# v.customize ["setextradata", :id, "VBoxInternal2/SharedFoldersEnableSymlinksCreate/v-root", "1"]
 	end
 
   
